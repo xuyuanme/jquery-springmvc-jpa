@@ -62,20 +62,19 @@ public class UserServiceImpl implements UserDetailsService, InitializingBean {
     public void afterPropertiesSet() throws Exception {
         System.out.println("kikoo");
 
-        Skill skill1 = new Skill();
-        skill1.setName("toto 1");
-        skillRepository.save(skill1);
-        Skill skill2 = new Skill();
-        skill2.setName("toto 2");
-        skillRepository.save(skill2);
-        Skill skill3 = new Skill();
-        skill3.setName("toto 3");
-        skillRepository.save(skill3);
-
-        Set<Skill> skills = new HashSet<Skill>(Arrays.asList(new Skill[]{skill1, skill2, skill3}));
-
-        if (userRepository.count() == 0) {
-            User user = new User();
+        if (skillRepository.count() == 0 && userRepository.count() == 0) {
+        	Skill skill1 = new Skill();
+        	skill1.setName("toto 1");
+        	skillRepository.save(skill1);
+        	Skill skill2 = new Skill();
+        	skill2.setName("toto 2");
+        	skillRepository.save(skill2);
+        	Skill skill3 = new Skill();
+        	skill3.setName("toto 3");
+        	skillRepository.save(skill3);
+        	Set<Skill> skills = new HashSet<Skill>(Arrays.asList(new Skill[]{skill1, skill2, skill3}));
+        	
+        	User user = new User();
             user.setFullname("admin");
             user.setLogin("admin");
             user.setPassword("admin");
